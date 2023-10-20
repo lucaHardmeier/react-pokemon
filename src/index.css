@@ -25,10 +25,9 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #1a1a1a;
 }
 
 h1 {
@@ -55,13 +54,49 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+li {
+  color: white;
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+  gap: 0.5rem;
+  background-color: #3b4cca;
+  box-shadow: 0 0 45px 0 rgba(255, 222, 0, 0.75);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 2px solid black;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 1rem;
+}
+
+.paginator {
+  display: grid;
+  grid-template-columns: repeat(20, auto);
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #3b4cca;
   }
   button {
     background-color: #f9f9f9;

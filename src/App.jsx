@@ -1,67 +1,18 @@
-import { useEffect, useState } from "react"
+import { useState } from "react";
+import Form from "./Components/Form";
+import CardsContainer from "./Components/CardsContainer";
 
 function App() {
-  const [pokemons, setPokemons] = useState([])
-  const [amount, setAmount] = useState("20")
-  const [page, setPage] = useState("1")
-  const [query, setQuery] = useState("")
-  const [search, setSearch] = useState("")
-
-  const getPokemons = async () => {
-    try {
-      const res = await fetch(query)
-      const data = await res.json()
-      setPokemons(data.results)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    getPokemons()
-  }, [query])
-
-  const handleClick = () => {
-    const offset = (page - 1) * amount
-    setQuery(
-      `https://pokeapi.co/api/v2/pokemon?limit=${amount}&offset=${offset}`
-    )
-  }
-
-  const filteredSearch = pokemons.filter((pokemon) =>
-    pokemon.name.includes(search)
-  )
+  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState("");
+  const [amount, setAmount] = useState("20");
 
   return (
-    <>
-      <div>
-        <label htmlFor="search">Buscar por nombre:</label>
-        <input
-          type="text"
-          name="search"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <label htmlFor="poke-amount">¿Cuántos pokemones desea ver?</label>
-        <input
-          type="text"
-          name="poke-amount"
-          onChange={(e) => setAmount(e.target.value)}
-        />
-        <label htmlFor="page">Número de página</label>
-        <input
-          type="text"
-          name="page"
-          onChange={(e) => setPage(e.target.value)}
-        />
-        <button onClick={handleClick}>Mostrar Pokemones</button>
-      </div>
-      <ul>
-        {filteredSearch.map(({ name, url }) => (
-          <li key={url}>{name}</li>
-        ))}
-      </ul>
-    </>
-  )
+    <div className="section">
+      <Form setQuery={setQuery} setSearch={setSearch} setAmount={setAmount} amount={amount} />
+      <CardsContainer query={query} search={search} amount={amount} />
+    </div>
+  );
 }
 
-export default App
+export default App;
