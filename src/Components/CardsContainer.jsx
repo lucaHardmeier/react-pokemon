@@ -23,6 +23,7 @@ const CardsContainer = ({ query, search, amount }) => {
     getPokemons();
   }, [query]);
 
+  console.log("pokemons", pokemons);
   const filteredSearch = pokemons.filter((pokemon) => pokemon.name.includes(search));
 
   return (

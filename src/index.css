@@ -33,6 +33,7 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: #f9f9f9;
 }
 
 button {
@@ -84,10 +85,21 @@ li {
 
 .paginator {
   display: grid;
-  grid-template-columns: repeat(20, auto);
+  grid-template-columns: repeat(10, auto);
   color: white;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 3rem auto;
+  cursor: pointer;
+  gap: 0.5rem;
+}
+
+.pageNum {
+  padding: 0.25rem;
+  border-radius: 50%;
+  background-color: #535bf2;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
 }
 
 @media (prefers-color-scheme: light) {
@@ -101,4 +113,22 @@ li {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Pokemon page */
+
+.poke-container {
+  display: flex;
+}
+
+.poke-info {
+  display: flex;
+  flex-direction: column;
+  color: #f9f9f9;
+}
+
+.poke-types {
+  display: flex;
+  gap: 1rem;
+  text-transform: capitalize;
 }
